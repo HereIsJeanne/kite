@@ -2,19 +2,29 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { fetchSp50Data, fetchSp50Ids } from '../../sp50Data';
 import CloudLayout from '../../components/CloudLayout';
+import styles from '../../styles/Sp50Item.module.css'; // Remember to create this file
 
 function Sp50Item({ item }) {
   const [rotation, setRotation] = useState(0);
+  const [scaleX, setScaleX] = useState(1);
+  const [scaleY, setScaleY] = useState(1);
 
   useEffect(() => {
     const handleMouseMove = (event) => {
       const { clientX, clientY } = event;
       const { innerWidth, innerHeight } = window;
       const offsetX = clientX - innerWidth / 2;
-      const offsetY = innerHeight / 2 - clientY;
-      const rotationValue = (Math.atan2(offsetX, offsetY) * 180) / Math.PI;
+      const offsetY = clientY - innerHeight / 2;
+      const distanceFromCenter = Math.sqrt(offsetX ** 2 + offsetY ** 2);
+      const maxDistance = Math.sqrt((innerWidth / 2) ** 2 + (innerHeight / 2) ** 2);
+      const elongationFactor = 1 - (distanceFromCenter / maxDistance) * 0.2; // Adjust the elongation factor as needed
+      const shrinkFactor = 1 + (distanceFromCenter / maxDistance) * 0.2; // Adjust the shrink factor as needed
+      const rotationValue = (Math.atan2(offsetY, offsetX) * 180) / Math.PI + 90; // Add 90 degrees to adjust the rotation
       setRotation(rotationValue);
+      setScaleX(elongationFactor);
+      setScaleY(shrinkFactor);
     };
+    
 
     document.addEventListener('mousemove', handleMouseMove);
 
@@ -25,25 +35,16 @@ function Sp50Item({ item }) {
 
   return (
     <CloudLayout>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '100vh',
-        }}
-      >
-        <div>
-          <h1>{item.Description}</h1>
-          <img
-            src={item.Image}
-            alt="Item Image"
-            style={{
-              width: '300px',
-              transform: `rotate(${rotation}deg)`,
-            }}
-          />
-        </div>
+      <div className={styles.itemContainer}>
+        <div className={styles.description} dangerouslySetInnerHTML={{ __html: item.Description }} />
+        <img
+          src={item.Image}
+          alt="Item Image"
+          className={styles.image}
+          style={{
+            transform: `rotate(${rotation}deg) scaleX(${scaleX}) scaleY(${scaleY})`,
+          }}
+        />
       </div>
     </CloudLayout>
   );

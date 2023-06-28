@@ -1,0 +1,21 @@
+.aboutContainer {
+  font-size: 6vw;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Align vertically in the center */
+  height: 100vh; /* Take full viewport height */
+  padding: 0 100px;
+}
+
+.aboutContainer p {
+  margin: 0;
+}
+
+/* Adjustments for smaller screens */
+@media screen and (max-width: 600px) {
+  .aboutContainer {
+    font-size: 6vw;
+    padding: 0 50px; /* adjust this value as needed */
+  }
+}

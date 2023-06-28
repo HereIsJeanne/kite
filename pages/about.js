@@ -1,9 +1,9 @@
 import CloudLayout from '../components/CloudLayout';
+import styles from '../styles/About.module.css';
 
 function AboutPage({ aboutData }) {
   return (
-    <div>
-      <h1>About Page</h1>
+    <div className={styles.aboutContainer}>
       {aboutData && <div dangerouslySetInnerHTML={{ __html: aboutData.AboutPageHTML }} />}
     </div>
   );

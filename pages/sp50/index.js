@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { fetchSp50Data } from '../../sp50Data';
 import CloudLayout from '../../components/CloudLayout';
+import styles from '../../styles/Sp50.module.css'; // Import the styles
 
 function Sp50Index({ sp50Data }) {
-  const router = useRouter();
 
   useEffect(() => {
     // Perform any necessary client-side initialization or effects
@@ -13,23 +13,13 @@ function Sp50Index({ sp50Data }) {
 
   return (
     <CloudLayout>
-      <div>
-        <h1>Sp50 Collection</h1>
-        <ul>
-          {sp50Data.map((item) => (
-            <li key={item.ID}>
-              <a
-                href={`/sp50/${item.ID}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  router.push(`/sp50/${item.ID}`);
-                }}
-              >
-                {item.Description}
-              </a>
-            </li>
-          ))}
-        </ul>
+      <div className={styles.container}>
+        {sp50Data.map((item) => (
+          <Link href={`/sp50/${item.ID}`} key={item.ID}>
+            <div className={styles.kite} style={{ backgroundImage: `url(${item.Image})` }}>
+            </div>
+          </Link>
+        ))}
       </div>
     </CloudLayout>
   );

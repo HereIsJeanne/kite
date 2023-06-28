@@ -48,7 +48,7 @@ function CloudLayout({ children }) {
         style={{
           backgroundImage: `url(${backgroundImageUrl})`,
           backgroundPosition: `${movement.x}px ${movement.y}px`,
-          backgroundSize: '200%', // Adjust as needed
+          backgroundSize: '2800px', // Adjust as needed
         }}
       >
         <NavBar />
