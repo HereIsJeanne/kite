@@ -9,11 +9,14 @@ body {
   background-size: auto;
   background-position: 0 0;
   color: white;
+  font-family: 'Inter'
 }
 .App {
   height: 100vh;
   background-size: cover;
   background-repeat: repeat;
+  display: flex;
+  flex-direction: column;
 }
 
 #__next {

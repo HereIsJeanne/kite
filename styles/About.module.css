@@ -12,6 +12,11 @@
   margin: 0;
 }
 
+.instagramContainer {
+  font-size: 16px;
+  padding-top: 32px;
+}
+
 /* Adjustments for smaller screens */
 @media screen and (max-width: 600px) {
   .aboutContainer {

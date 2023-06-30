@@ -1,39 +1,88 @@
 .nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr; /* divides the nav bar into 5 equal spaces */
+  padding: 15px;
+  white-space: nowrap;
+  height: 60px;
+}
+
+
+
+.mobileNavList {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  list-style-type: none;
+  display: contents; /* allows the li items to be direct children of the nav */
+  margin: 0;
+  padding: 15px;
+  font-size: 24px;
+}
+.mobileNav {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  white-space: nowrap;
+}
+
+.navList {
+  display: contents; /* allows the li items to be direct children of the nav */
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  font-size: 24px;
+}
+
+
+
+.navList a {
+  display: flex;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.navList .active a {
+  color: #ffd700;
+}
+
+/* Media query for screens smaller than 768px */
+@media screen and (max-width: 768px) {
+  .navList {
+    font-size: 16px 16px 0px 16px; /* Adjust the font size for small screens */
+  }
+}
+
+
+/* styles/NavBar.module.css */
+
+/* NavBar.module.css */
+
+.navBar {
+  display: none;
+}
+
+/* Desktop */
+@media screen and (min-width: 415px) {
+  .desktop {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr; /* divides the nav bar into 5 equal spaces */
     padding: 15px;
+    white-space: nowrap;
+    height: 60px;
   }
-  
-  .navList {
-    display: contents; /* allows the li items to be direct children of the nav */
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    font-size: 24px;
-  }
-  
-  .navList li {
+}
+
+/* Mobile */
+@media screen and (max-width: 414px) {
+  .mobile {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 15px;
   }
-  
-  .navList li:nth-child(2) {
-    visibility: hidden; /* makes the second item invisible but still occupying space */
+  .mobile li {
+    display: flex;
+  align-items: center;
   }
-  
-  .navList a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  .navList .active a {
-    color: #ffd700;
-  }
-  
-  /* Media query for screens smaller than 768px */
-  @media screen and (max-width: 768px) {
-    .navList {
-      font-size: 16px; /* Adjust the font size for small screens */
-    }
-  }
-  
+}

@@ -1,32 +1,32 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styles from './NavBar.module.css';
+import { MdClose, MdInfoOutline } from 'react-icons/md';
 
-function NavBar() {
-    const router = useRouter();
-    const currentPage = router.pathname;
-  
-    return (
-      <nav className={styles.nav}>
+function NavBar({ firstItem }) {
+  const router = useRouter();
+  const currentPage = router.pathname;
+
+  return (
+    <>
+      <nav className={`${styles.navBar} ${styles.mobile}`}>
         <ul className={styles.navList}>
-          <li className={currentPage === '/' ? styles.active : ''}>
-            <Link href="/">HOME</Link>
-          </li>
-          <li></li> {/* Empty list item */}
-          <li className={currentPage.startsWith('/sp50') ? styles.active : ''}>
-            <Link href="/sp50">SP50 COLLECTION</Link>
-          </li>
-          <li className={currentPage === '/about' ? styles.active : ''}>
-            <Link href="/about">ABOUT</Link>
-          </li>
-          <li>
-            <a href="https://instagram.com">INSTAGRAM</a>
-          </li>
+          <li>SPF50 COLLECTION</li>
+          <li>{currentPage === '/about' ? <Link href="/"><MdClose /></Link> : <Link href="/about"><MdInfoOutline /></Link>}</li>
         </ul>
       </nav>
-    );
-  }
-  
-  
+      
+      <nav className={`${styles.navBar} ${styles.desktop}`}>
+        <ul className={styles.navList}>
+          <li>{firstItem ? <span>{firstItem}</span> : <Link href="/">FLIGHT MODE</Link>}</li>
+          <li></li>
+          <li><Link href="/spf50">SPF50 COLLECTION</Link></li>
+          <li><Link href="/about">ABOUT</Link></li>
+          <li><a href="https://www.instagram.com/spf50.collection">INSTAGRAM</a></li>
+        </ul>
+      </nav>
+    </>
+  );
+}
 
 export default NavBar;
