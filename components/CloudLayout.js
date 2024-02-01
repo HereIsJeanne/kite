@@ -47,7 +47,7 @@ function CloudLayout({ movementEnabled = false, firstItem = null, children }) {
   }, [movementEnabled, position]);
 
   const publicUrl = process.env.PUBLIC_URL || '';
-  const backgroundImageUrl = `${publicUrl}/background-image.jpg`;
+  const backgroundImageUrl = `${publicUrl}/test2.png`;
 
   return (
     <>
