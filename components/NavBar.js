@@ -21,8 +21,8 @@ function NavBar({ firstItem }) {
           <li>{firstItem ? <span>{firstItem}</span> : <Link href="/">FLIGHT MODE</Link>}</li>
           <li></li>
           <li><Link href="/spf50">SPF50 COLLECTION</Link></li>
+          <li></li>
           <li><Link href="/about">ABOUT</Link></li>
-          <li><a href="https://www.instagram.com/spf50.collection">INSTAGRAM</a></li>
         </ul>
       </nav>
     </>
