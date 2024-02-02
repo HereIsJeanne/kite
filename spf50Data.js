@@ -5,10 +5,15 @@ export async function fetchSpf50Data() {
     const res = await fetch('https://sheetdb.io/api/v1/pbw45bqdwlytn');
     const data = await res.json();
 
-    // Modify each image URL to route through the cacheImage serverless function
+    // Check if the environment is local or production
+    const isLocal = process.env.NODE_ENV == 'development';
+
     cachedSpf50Data = data.map(item => ({
       ...item,
-      Image: `/api/cacheImage?imageUrl=${encodeURIComponent(item.Image)}`
+      // Use the serverless function in production, direct URL in local
+      Image: isLocal 
+             ? item.Image 
+             : `/api/cacheImage?imageUrl=${encodeURIComponent(item.Image)}`
     }));
   }
   return cachedSpf50Data;
