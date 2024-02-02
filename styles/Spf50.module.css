@@ -4,6 +4,10 @@
   scrollbar-width: thin; /* Adjust the width as needed */
 }
 
+.spacing {
+  height: 60px;
+}
+
 .container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(calc((100% - 20px) / 3), 1fr)); /* Set maximum 3 elements per row */
