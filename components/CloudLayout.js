@@ -2,14 +2,16 @@ import { useEffect, useState, useCallback, useMemo, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { useMediaQuery } from 'react-responsive';
 import NavBar from './NavBar';
-import throttle from 'lodash/throttle'; // You can install lodash for throttling
+import throttle from 'lodash/throttle'; 
 
 function CloudLayout({ movementEnabled = false, firstItem = null, children }) {
   const isMobile = useMediaQuery({ maxWidth: 414 });
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [movement, setMovement] = useState({ x: 0, y: 0 });
+  const [lazyBackgroundImage, setLazyBackgroundImage] = useState(null);
   const router = useRouter();
   const requestRef = useRef();
+  const layoutRef = useRef();
 
   const updatePosition = (x, y) => {
     setPosition({ x, y });
@@ -21,7 +23,6 @@ function CloudLayout({ movementEnabled = false, firstItem = null, children }) {
     requestRef.current = requestAnimationFrame(() => updatePosition(x, y));
   }, []);
 
-  // Throttled version of handleMouseMove
   const throttledMouseMove = useCallback(throttle(handleMouseMove, 10), [handleMouseMove]);
 
   useEffect(() => {
@@ -49,20 +50,33 @@ function CloudLayout({ movementEnabled = false, firstItem = null, children }) {
     return () => clearInterval(interval);
   }, [position]);
 
-  const backgroundImageUrl = useMemo(() => {
-    const publicUrl = process.env.PUBLIC_URL || '';
-    return `${publicUrl}/background-image-lighter.jpg`;
-  }, []);
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !lazyBackgroundImage) {
+          const publicUrl = process.env.PUBLIC_URL || '';
+          setLazyBackgroundImage(`${publicUrl}/background-image.jpg`);
+          observer.disconnect();
+        }
+      });
+    });
+
+    if (layoutRef.current) {
+      observer.observe(layoutRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [lazyBackgroundImage]);
 
   const backgroundStyle = useMemo(() => ({
-    backgroundImage: `url(${backgroundImageUrl})`,
+    backgroundImage: lazyBackgroundImage ? `url(${lazyBackgroundImage})` : 'none',
     backgroundPosition: `${movement.x}px ${movement.y}px`,
     backgroundSize: '2800px',
-  }), [movement, backgroundImageUrl]);
+  }), [movement, lazyBackgroundImage]);
 
   return (
     <>
-      <div className="App" style={backgroundStyle}>
+      <div className="App" style={backgroundStyle} ref={layoutRef}>
         <NavBar firstItem={isMobile ? null : firstItem} />
         {children}
       </div>
