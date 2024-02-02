@@ -14,6 +14,7 @@ function Spf50Index({ spf50Data }) {
   return (
     <CloudLayout>
       <div className={styles.scrollContainer}>
+        <div className={styles.spacing} ></div>
         <div className={styles.container}>
           {spf50Data.map((item) => (
             <Link href={`/spf50/${item.ID}`} key={item.ID}>
