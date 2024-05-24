@@ -6,5 +6,6 @@ module.exports = {
         destination: 'https://sheetdb.io/api/v1/dnuw839ldawjx/:path*',
       },
     ];
+    
   },
 };
