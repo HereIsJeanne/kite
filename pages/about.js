@@ -28,6 +28,7 @@ export async function getStaticProps() {
     props: {
       aboutData: data[0],
     },
+    revalidate: 60, // In seconds. This example revalidates the page every 60 seconds.
   };
 }
 
