@@ -1,11 +1,11 @@
 .aboutContainer {
-  font-size: 6vw;
+  font-size: 4vw;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center; /* Align vertically in the center */
   height: 100vh; /* Take full viewport height */
-  padding: 0 100px;
+  padding: 0 300px;
 }
 
 .aboutContainer p {
