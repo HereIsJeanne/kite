@@ -9,7 +9,7 @@
   display: flex;
   justify-content: center;
   align-items: baseline;
-  height: calc(100% - 150px); /* Subtract the fixed height of the descriptionContainer */
+  height: calc(100% - 50px); /* Subtract the fixed height of the descriptionContainer */
   position: relative;
 }
 
