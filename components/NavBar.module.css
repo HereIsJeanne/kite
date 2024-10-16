@@ -1,30 +1,96 @@
-/* General Navigation List */
+
+.nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr; /* divides the nav bar into 5 equal spaces */
+  padding: 15px;
+  white-space: nowrap;
+  height: 60px;
+}
+
+
+
+.mobileNavList {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  list-style-type: none;
+  display: contents; /* allows the li items to be direct children of the nav */
+  margin: 0;
+  padding: 15px;
+  font-size: 24px;
+}
+.mobileNav {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  white-space: nowrap;
+}
+
 .navList {
-  display: flex; /* Make the nav list a flex container */
-  justify-content: space-between; /* Space out the items */
-  list-style-type: none; /* Remove bullets */
+  display: contents; /* allows the li items to be direct children of the nav */
+  list-style-type: none;
   margin: 0;
   padding: 0;
+  font-size: 24px;
   width: 100%;
-  font-size: 24px; /* Font size */
-  white-space: nowrap;
 }
 
-/* Link styling inside the nav list */
+
+
 .navList a {
-  display: block;
+  display: flex;
   color: white;
   text-decoration: none;
-  padding: 10px 20px;
   white-space: nowrap;
+  justify-content: center;
 }
 
-/* Hide the desktop navbar by default (visible only on larger screens) */
-.desktop {
+.right {
+  display: flex;
+
+  justify-content: flex-end !important;
+}
+
+.left {
+  display: flex;
+  justify-content: flex-start !important;
+}
+
+.center {
+  display: flex;
+
+  justify-content: center !important;
+}
+
+.navListDesktop {
+  display: flex;
+}
+
+.navListDesktop li {
+  flex: 1;
+}
+
+.navList .active a {
+  color: #ffd700;
+}
+
+/* Media query for screens smaller than 768px */
+@media screen and (max-width: 768px) {
+  .navList {
+    font-size: 16px 16px 0px 16px; /* Adjust the font size for small screens */
+  }
+}
+
+
+/* styles/NavBar.module.css */
+
+/* NavBar.module.css */
+
+.navBar {
   display: none;
 }
 
-/* Show the desktop navbar for screens larger than 414px */
+/* Desktop */
 @media screen and (min-width: 415px) {
   .desktop {
     display: flex;
@@ -35,37 +101,10 @@
     position: absolute;
     z-index: 99999;
     width: 100%;
-    
-  }
-
-  /* Ensure navList behaves like a flex container */
-  .desktop .navList {
-    display: flex;
-    width: 100%; /* Full width */
-  }
-
-  /* Make each list item take 1/3 of the space */
-  .desktop .navList li {
-    flex: 1; /* Equal space for each <li> */
-    display: flex;
-    align-items: center; /* Center the items vertically */
-  }
-
-  /* Text alignments */
-  .desktop .navList li:first-child {
-    justify-content: flex-start; /* Left align */
-  }
-
-  .desktop .navList li:nth-child(3) {
-    justify-content: center; /* Center align */
-  }
-
-  .desktop .navList li:nth-child(5) {
-    justify-content: flex-end; /* Right align */
   }
 }
 
-/* Mobile-specific styles */
+/* Mobile */
 @media screen and (max-width: 414px) {
   .mobile {
     display: flex;
@@ -74,32 +113,9 @@
     position: absolute;
     z-index: 99999;
     width: 100%;
-   
   }
-
   .mobile li {
     display: flex;
-    align-items: center;
-  }
-
-  .mobileNavList {
-    display: flex;
-    justify-content: space-between;
-    padding: 15px;
-    list-style-type: none;
-    margin: 0;
-    font-size: 16px; /* Adjust font size for mobile */
-  }
-
-  /* Hide the mobile navbar on larger screens */
-  .mobile {
-    display: none;
-  }
-}
-
-/* Show mobile navbar for screens smaller than 415px */
-@media screen and (max-width: 414px) {
-  .mobile {
-    display: flex;
+  align-items: center;
   }
 }
