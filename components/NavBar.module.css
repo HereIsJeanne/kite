@@ -19,7 +19,12 @@
   white-space: nowrap;
 }
 
-/* Desktop-specific styles */
+/* Hide the desktop navbar by default (visible only on larger screens) */
+.desktop {
+  display: none;
+}
+
+/* Show the desktop navbar for screens larger than 414px */
 @media screen and (min-width: 415px) {
   .desktop {
     display: flex;
@@ -84,5 +89,17 @@
     list-style-type: none;
     margin: 0;
     font-size: 16px; /* Adjust font size for mobile */
+  }
+
+  /* Hide the mobile navbar on larger screens */
+  .mobile {
+    display: none;
+  }
+}
+
+/* Show mobile navbar for screens smaller than 415px */
+@media screen and (max-width: 414px) {
+  .mobile {
+    display: flex;
   }
 }
