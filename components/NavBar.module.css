@@ -30,7 +30,7 @@
     position: absolute;
     z-index: 99999;
     width: 100%;
-    background-color: #333; /* Example background color */
+    
   }
 
   /* Ensure navList behaves like a flex container */
