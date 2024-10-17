@@ -23,6 +23,7 @@
   display: flex;
   padding: 0px 0px 0px 15px; /* Adjusted padding-top for mobile */
   height: 90px;
+  position: absolute;
 }
 
 .description {
@@ -51,6 +52,7 @@
 
   .descriptionContainer {
     padding-top: 12px; /* Adjusted padding-top for mobile */
+    position: static;
   }
 
   .image {
