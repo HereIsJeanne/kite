@@ -9,7 +9,7 @@ function Spf50Item({ item }) {
   const [showDescription, setShowDescription] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
-  const mediaQuery = useMediaQuery({ maxWidth: 414 });
+  const mediaQuery = useMediaQuery({ maxWidth: 460 });
 
   useEffect(() => {
     setIsMobile(mediaQuery);

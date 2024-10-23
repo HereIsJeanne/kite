@@ -4,7 +4,7 @@ import { useMediaQuery } from 'react-responsive';
 
 
 function AboutPage({ aboutData }) {
-  const isMobile = useMediaQuery({ maxWidth: 414 }); // Adjust the max width as per your needs
+  const isMobile = useMediaQuery({ maxWidth: 460 }); // Adjust the max width as per your needs
   return (<>
     <div className={styles.aboutContainer}>
       {aboutData && <div dangerouslySetInnerHTML={{ __html: aboutData.AboutPageHTML }} />}

@@ -7,7 +7,7 @@ import { useMediaQuery } from 'react-responsive';
 
 function HomePage() {
   
-  const isMobile = useMediaQuery({ maxWidth: 414 });
+  const isMobile = useMediaQuery({ maxWidth: 460 });
   const [spf50Data, setSpf50Data] = useState([]);
   const [selectedKiteIndex, setSelectedKiteIndex] = useState(null); // set initial value to null
   const [showDescription, setShowDescription] = useState(false);

@@ -42,7 +42,7 @@
   max-height: 100%;
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 460px) {
   .itemContainer {
     padding-top: 16px;
     flex-direction: column;

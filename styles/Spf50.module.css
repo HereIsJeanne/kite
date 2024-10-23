@@ -24,7 +24,7 @@
   height: 0;
 }
 
-@media (max-width: 414px) {
+@media (max-width: 460px) {
   .container {
     grid-template-columns: 1fr;
   }
