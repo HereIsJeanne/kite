@@ -29,6 +29,7 @@
   display: contents; /* allows the li items to be direct children of the nav */
   list-style-type: none;
   margin: 0;
+  
   padding: 0;
   font-size: 24px;
   width: 100%;
